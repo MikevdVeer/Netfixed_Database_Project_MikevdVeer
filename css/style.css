@@ -1,0 +1,190 @@
+:root {
+    --main-color: #ffc119;
+    --bg-color: #222;
+    --nav-color: #1a1a1a;
+    --text-color: #fff;
+    --link-color: #ff8c00; /* or #ffa07a, or #66d9ef */
+    --close-button-color: #2f4f7f; /* dark blue */
+    --section-color: background-color: #333;
+    --dark-section-color: background-color: #1E1E1E;
+}
+
+/* video */
+
+video {
+  object-fit: cover;
+}
+
+/* bootstrap var */
+.bg-login {
+  background-color: rgb(248 249 250 / 80%);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: white;
+}
+
+header {
+    background-color: #1a1a1a;
+}
+
+.navbar-brand{
+    color: var(--main-color);
+}
+
+.nav-link {
+    color: var(--link-color);
+}
+
+.navbar-brand {
+  color: var(--main-color);
+}
+
+.navbar-nav a{
+  color: var(--text-color);
+}
+
+/* Need to change bg-color to root bg-color */
+.navbar.scrolled {
+    background-color: var(--nav-color);
+}
+
+.offcanvas-header {
+  background-color: var(--nav-color);
+}
+
+.hero a {
+  color: var(--link-color);
+}
+
+/* still an bootstrap class but has modified customizations */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: var(--main-color);
+  background-color: var(--bg-color);
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 15px;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.sidebar {
+  background-color: #333;
+  max-width: 300px;
+}
+
+.responsive-iframe {
+  max-width: 100%;
+  padding-top: 56.25%;
+}
+
+.review-card {
+  background-color: var(--section-color);
+}
+
+.review-content {
+  background-color: var(--dark-section-color);
+}
+
+.episode-list {
+  background-color: #1E1E1E;
+}
+
+.episode-list button {
+  background-color: #2c2c2c;
+  transition: background-color 0.3s;
+}
+
+.episode-list button.active {
+  background-color: orange;
+  color: black;
+}
+
+.episode-list button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.tag-general { background-color: #007bff; }
+.tag-update { background-color: #dc3545; }
+.tag-suggestion { background-color: #28a745; }
+.tag-question { background-color: #ffc107; }
+.tag-discussion { background-color: #6f42c1; }
+.tag-feedback { background-color: #fd7e14; }
+
+.tag-sidebar {
+  background-color: #333;
+}
+
+.review-content {
+  background-color:  #1E1E1E;
+}
+
+footer {
+  background-color: var(--nav-color);
+}
+
+.footer-logo {
+  color: var(--main-color);
+}
+
+.footer-section h5 {
+  color: var(--link-color);
+}
+
+.profile-header {
+  background-color: #5a8cf0;
+  height: 250px;
+}
+
+.profile-header button {
+  background-color: #ff6c00;
+  border: none;
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+.profile-section {
+  background-color: #000;
+  color: #fff;
+}
+
+.bio-section,
+.communities-section {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.status-circle {
+  background-color: #32cd32;
+  width: 12px;
+  height: 12px;
+}
+.avatar {
+  position: relative;
+  top: -100px;
+}
+
+.bi-suit-heart {
+  color: white;
+  transition: color 1s ease; /* Smooth transition for color change */
+}
+
+.bi-suit-heart-fill {
+  color: white; /* Initial color */
+  transition: color 1s ease; /* Smooth transition for color change */
+}
+
+.bi-suit-heart-fill {
+  color: red; /* Color changes to red on hover */
+}
