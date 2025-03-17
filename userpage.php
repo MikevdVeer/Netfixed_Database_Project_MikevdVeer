@@ -25,6 +25,7 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="sweetalert2.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -39,10 +40,14 @@ $result = $query->fetchAll(PDO::FETCH_ASSOC);
           <h4 class="m-0">Netfixed</h4>
         </a>
         <!-- Collapsible wrapper Left side -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse d-flex gap-3" id="navbarSupportedContent">
+        <a href="./streamshare.php" class="text-decoration-none text-white">
+            <h4 class="m-0 fs-5">Stream & Share</h4>
+          </a>
           <a href="./genre.php" class="text-decoration-none text-white">
             <h4 class="m-0 fs-5">Genre</h4>
           </a>
+          
         </div>
         <!-- Avatar -->
         <div class="dropdown">

@@ -110,7 +110,6 @@ if (isset($_POST['login'])) {
           </div>
           <div class="d-flex justify-content-between">
             <a class="text-decoration-none" href="signup.php">&#8592; back</a>
-            <a class="text-decoration-none" href="login.php">Login &#8594;</a>
           </div>
         </div>
       </div>

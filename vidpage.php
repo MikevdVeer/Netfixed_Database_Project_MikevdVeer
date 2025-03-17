@@ -107,6 +107,7 @@ if (isset($_POST['send'])) {
   <title>Netfixed<?php echo '  -  ' . $showAnimeData['name'] ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="assets/css/vidpage.css">
 </head>
 
 <body>
@@ -131,10 +132,10 @@ if (isset($_POST['send'])) {
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
             <li>
-              <a class="dropdown-item" href="./profile.php">My profile</a>
+              <a class="dropdown-item" href="profile.php">My profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="./edit_profile.php">Settings</a>
+              <a class="dropdown-item" href="edit_profile.php">Settings</a>
             </li>
             <li>
               <a class="dropdown-item" href="logout.php">Logout</a>
@@ -148,70 +149,81 @@ if (isset($_POST['send'])) {
     <div class="container-fluid p-5 pt-0 pb-0">
       <div class="row">
         <!-- Video Player Section -->
-          <div class="video-player container-fluid p-2 rounded" style="background-color: #2c2c2c;">
-            <?php
-            if (empty($episodeIframe)) {
-              echo '<p>No video available.</p>';
-            }
-            ?>
-            <div class="responsive-iframe w-100 position-relative">
-              <iframe class="position-absolute top-0 start-0" id="videoIframe"
-                src="<?php echo $episodeIframe[0]['iframe']; ?>"
-                frameborder="0" allowfullscreen="true" marginwidth="0" marginheight="0" scrolling="no" width="100%"
-                height="100%">
-              </iframe>
-            </div>
+        <div class="video-player container-fluid p-2 rounded" style="background-color: #2c2c2c;">
+          <?php
+          if (empty($episodeIframe)) {
+            echo '<p>No video available.</p>';
+          }
+          ?>
+          <div class="responsive-iframe w-100 position-relative">
+            <iframe class="position-absolute top-0 start-0" id="videoIframe"
+              src="<?php echo $episodeIframe[0]['iframe']; ?>"
+              frameborder="0" allowfullscreen="true" marginwidth="0" marginheight="0" scrolling="no" width="100%"
+              height="100%">
+            </iframe>
           </div>
-          <div class="container-fluid d-flex mt-3 p-3 rounded" style="background-color: #2c2c2c;">
-            <div class="col-md-3 p-1">
-              <h4 class="title"><?php echo $showAnimeData['name']; ?></h4>
-              <div class="p-3">
-                <img src="./assets/img/<?php echo $showAnimeData['image'] ?>" alt="Anime poster" class="img-fluid rounded mt-3" />
+        </div>
+        <div class="container-fluid mt-4">
+          <div class="container-fluid d-flex mt-3 p-3 rounded content-wrapper">
+            <!-- Anime Info Section -->
+            <div class="col-md-3 p-1 anime-info">
+              <h4 class="title hover-title"><?php echo $showAnimeData['name']; ?></h4>
+              <div class="poster-wrapper p-3">
+                <img src="./assets/img/<?php echo $showAnimeData['image'] ?>" 
+                     alt="Anime poster" 
+                     class="img-fluid rounded mt-3 poster-image" />
               </div>
             </div>
-            <!-- episodes -->
+
+            <!-- Episodes Section -->
             <div class="col-md-6 container-fluid bio-section">
               <div class="row">
                 <div class="col-md-4 mt-2">
                   <ul class="list-group">
-                    <details class="mb-2">
-                      <summary class="list-group-item animation bg-dark text-white">Seasons</summary>
-                      <div cl>
+                    <details class="mb-2 season-dropdown">
+                      <summary class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">
+                        Seasons
+                        <i class="fas fa-chevron-down"></i>
+                      </summary>
+                      <div class="season-list">
                         <a href="" class="text-decoration-none">
-                          <li class="list-group-item">Season 1</li>
+                          <li class="list-group-item season-item">Season 1</li>
                         </a>
-                        <li class="list-group-item">No seasons available</li>
+                        <li class="list-group-item season-item">No seasons available</li>
                       </div>
                     </details>
                   </ul>
                 </div>
+
                 <div class="col-md-8 p-1 mt-2 mb-2">
-                  <h4 class="title">Episode: <?php echo $animeEp ?></h4>
+                  <h4 class="title mb-3">Episode: <?php echo $animeEp ?></h4>
+                  <a href="streamshare.php?episode_id=<?php echo $episodeIframe[0]['id']; ?>" 
+                     class="btn btn-primary share-button">
+                    <i class="fas fa-share-alt"></i> Stream & Share
+                  </a>
                 </div>
-                <div class="episode-list d-flex flex-wrap gap-1 pt-2 pb-2 rounded" style="max-height:100%">
-                    <?php
-                    if (!empty($episodeResult)) {
-                      foreach ($episodeResult as $episode) {
-                        $epi = $episode['episode_nr'];
-                        $activeEpi = "";
-                        if ($epi == $animeEp) {
-                          $activeEpi = 'active';
-                        }
-                        echo "<a href='vidpage.php?id=$animeId&ep=$epi'>";
-                        echo "<button class='btn btn-dark text-white m-1 $activeEpi'>$epi</button>";
-                        echo "</a>";
-                      }
-                    } else {
-                      echo "<p class='text-white'>No episodes available.</p>";
+
+                <div class="episode-list d-flex flex-wrap gap-2 pt-3 pb-3 rounded">
+                  <?php
+                  if (!empty($episodeResult)) {
+                    foreach ($episodeResult as $episode) {
+                      $epi = $episode['episode_nr'];
+                      $activeEpi = ($epi == $animeEp) ? 'active' : '';
+                      echo "<a href='vidpage.php?id=$animeId&ep=$epi' class='episode-link'>";
+                      echo "<button class='episode-button $activeEpi'>$epi</button>";
+                      echo "</a>";
                     }
-                    ?>
-                  </div>
+                  } else {
+                    echo "<p class='text-white'>No episodes available.</p>";
+                  }
+                  ?>
+                </div>
               </div>
-
             </div>
-
           </div>
+        </div>
           <!-- video recommendations Section -->
+           <h2 class="mt-3">Recommendations</h2>
         <div class="tag-sidebar container mt-3 p-3 rounded h-100">
         <div class="row row-cols-5 mx-auto justify-content-center gap-4">
           <?php
